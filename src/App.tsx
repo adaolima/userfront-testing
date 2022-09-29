@@ -6,10 +6,13 @@ import {
   NavLink
 } from 'react-router-dom';
 
+
 // import './App.css';
 
 import Login from './pages/Login'
 import Home from './pages/Home'
+import PasswordReset from './pages/PasswordReset';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -23,17 +26,23 @@ function App() {
             <li className="nav-item">
               <NavLink to="/login">Login</NavLink>
             </li>
-            {/* <li className="nav-item">
-              <Link className="nav-link" to="/reset">Reset</Link>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/reset">Reset</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/dashboard">Dashboard</Link>
-            </li> */}
+              <NavLink className="nav-link" to="/dashboard">Dashboard</NavLink>
+            </li>
           </ul>
         </nav>
         <Switch>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/reset">
+            <PasswordReset />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
           </Route>
           <Route path="/">
             <Home />
