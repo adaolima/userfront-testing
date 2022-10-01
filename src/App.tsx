@@ -5,7 +5,7 @@ import {
   Route,
   NavLink
 } from 'react-router-dom';
-
+import Userfront from '@userfront/react';
 
 // import './App.css';
 
@@ -13,6 +13,19 @@ import Login from './pages/Login'
 import Home from './pages/Home'
 import PasswordReset from './pages/PasswordReset';
 import Dashboard from './pages/Dashboard';
+
+Userfront.init("pn445q8n");
+
+const getInfo = async () => {
+  const res = await fetch('/dashboard', { 
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${Userfront.accessToken()}`
+    }
+  })
+  console.log(res)
+}
 
 function App() {
   return (
@@ -31,6 +44,9 @@ function App() {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/dashboard">Dashboard</NavLink>
+            </li>
+            <li>
+              <button onClick={getInfo}>Get Info test</button>
             </li>
           </ul>
         </nav>
